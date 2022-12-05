@@ -13,26 +13,6 @@ const service = async () => {
     if (urls.length > 0) {
 
         urls = urls.filter((url) => url.link.match(/studio.co/i));
-        let urlsString = `
-        https://www.studio.co.uk/shop/garden---outdoor/garden-outdoor-lighting/solar-lights-for-the-garden/victoriana-365-solar-lamp-post?searchTerm=lamp%20post&pageView=&pageSize=60&orderBy=#
-        https://www.studio.co.uk/shop/homewares/kitchen-essentials/kitchenware-and-accessories/bins/over-door-bin?searchTerm=bin&pageView=&pageSize=60&orderBy=
-        https://www.studio.co.uk/shop/garden---outdoor/garden-outdoor-furniture/garden-furniture-sets/aspen-6-seat-modular-set
-        https://www.studio.co.uk/shop/christmas/christmas-lights-decorations/christmas-room-decorations/led-santa-with-lamp-post?searchTerm=lamp%20post&pageView=&pageSize=60&orderBy=
-        https://www.studio.co.uk/shop/homewares/furniture-collections/furniture-collections-recliners/folding-recliner-chair-faux-leather-blk#
-        https://www.studio.co.uk/shop/winter-warmers/winter-warmers-homeware/winter-warmers-heating/storage-fire-surround-white?swatchColour=Grey&searchTerm=heat&pageView=&pageSize=60&orderBy=#
-        https://www.studio.co.uk/shop/winter-warmers/winter-warmers-homeware/winter-warmers-heating/egl-small-electric-fire-cream?searchTerm=stove&pageView=&pageSize=60&orderBy=#
-        https://www.studio.co.uk/shop/christmas/lights-for-christmas/outdoor-christmas-lights/novelty-outdoor-christmas-lights/24m-led-inflatable-soldier#
-        https://www.studio.co.uk/shop/christmas/lights-for-christmas/christmas-light-up-decorations/led-wobbly-white-reindeer
-        https://www.studio.co.uk/shop/christmas/lights-for-christmas/novelty-christmas-lights/solar-powered-santa-figurine
-        https://www.studio.co.uk/shop/christmas/xmas-trees/pre-lit---led-trees/4ft-white-led-birch-tree
-        https://www.studio.co.uk/shop/christmas/xmas-trees/pre-lit---led-trees/4ft-twinkling-led-willow-tree
-        https://www.studio.co.uk/shop/christmas/xmas-trees/fibre-optic-christmas-trees/6ft-dual-fo-willow-tree
-        https://www.studio.co.uk/shop/shop-all-offers/shop-all-christmas-offers/special-offer-price-promo-christmas/6ft-green-fo-burst-tree?swatchColour=Black&source=TT0E&ch=aw&utm_source=awin&utm_medium=affiliate&utm_campaign=294583&awc=1657_1667790569_1cd49fca6c80549104a615c577913dd6
-        https://www.studio.co.uk/shop/christmas/xmas-trees/fibre-optic-christmas-trees/6ft-green-fo-burst-tree?swatchColour=White
-        https://www.studio.co.uk/shop/christmas/xmas-trees/fibre-optic-christmas-trees/6ft-green-fo-burst-tree?swatchColour=White
-        https://www.studio.co.uk/shop/christmas/xmas-trees/christmas-trees-luxury-traditional/6ft-green-value-tree?swatchColour=Frosted
-        `;
-        urls = urlsString.split("\n").map(url => url.trim()).filter(str => str != "");
         // urls = ["https://www.studio.co.uk/shop/christmas/xmas-trees/christmas-trees-luxury-traditional/6ft-green-value-tree?swatchColour=Frosted"]
         console.log(urls);
         if (urls.length > 0) {
@@ -49,7 +29,7 @@ const service = async () => {
                        
                     // let browser = await puppeteer.launch({ headless: false, args: ['--proxy-server=socks5://127.0.0.1:' + port] });
                     // let page = await browser.newPage();
-                    await page.goto(url, { waitUntil: 'load', timeout: 0 });
+                    await page.goto(url.link, { waitUntil: 'load', timeout: 0 });
                     await page.waitForSelector('#price_display_1605963');
                     let { title, price } = await page.evaluate(() => {
                     let title = document.querySelector('h1').textContent.trim();
