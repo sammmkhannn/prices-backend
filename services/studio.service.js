@@ -13,7 +13,7 @@ const service = async () => {
     if (urls.length > 0) {
 
         urls = urls.filter((url) => url.link.match(/studio.co/i));
-        // urls = ["https://www.studio.co.uk/shop/christmas/xmas-trees/christmas-trees-luxury-traditional/6ft-green-value-tree?swatchColour=Frosted"]
+        urls = ["https://www.studio.co.uk/shop/christmas/xmas-trees/christmas-trees-luxury-traditional/6ft-green-value-tree?swatchColour=Frosted"]
         console.log(urls);
         if (urls.length > 0) {
             for (let url of urls) {
